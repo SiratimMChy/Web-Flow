@@ -19,9 +19,23 @@
     <!-- Header -->
     <header>
         <nav>
-            <h1 class="nav-title">Web<span>Flow</span></h1>
-            <ul>
-                <li><a href="#contact" class="btn">Sign Up</a></li>
+            <h1 class="nav-title"><span class="nav-web">Web</span><span class="nav-flow">Flow</span></h1>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li id="mobileLogoutContainer" style="display: none; width: 100%; margin-top: 10px;">
+                    <button id="mobileLogoutBtn" class="btn" style="background: linear-gradient(135deg, #513eff 0%, #0099ff 100%); cursor: pointer; padding: 12px 24px; font-weight: 700; width: 100%; display: block;">Log Out</button>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navLinks" class="nav-auth">
+                <li><a href="signup.html" class="btn">Sign Up</a></li>
             </ul>
         </nav>
     </header>
@@ -30,7 +44,7 @@
     <section class="banner">
         <main class="hero">
             <h1>Cool Dark UI Template for <br> Webflow Agencies!</h1>
-            <a href="#contact" class="btn">Stay Focused</a>
+            <a href="signup.html" class="btn">Stay Focused</a>
         </main>
     </section>
 
@@ -64,7 +78,7 @@
                 <p>“This template made our site look professional instantly. Clean, modern, and easy to use.” ~ Studio
                     Vertex</p>
                 <div class="user">
-                    <img src="image/avatar.png" alt="Avatar of Siratim">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Avatar of Siratim">
                     <div class="user-info">
                         <h4>Siratim</h4>
                         <time datetime="2025-07-10">10 July 2025</time>
@@ -84,7 +98,7 @@
                 <h3>Perfect for Startups</h3>
                 <p>“Fast setup and great design. It helped us launch with confidence.” ~ NovaTech Labs</p>
                 <div class="user">
-                    <img src="image/avatar.png" alt="Avatar of Saima Hasan">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Avatar of Saima Hasan">
                     <div class="user-info">
                         <h4>Saima Hasan</h4>
                         <time datetime="2025-07-10">10 July 2025</time>
@@ -104,7 +118,7 @@
                 <h3>Highly Recommend</h3>
                 <p>“Looks premium and performs great. Clients love the user experience.” ~ Pixel & Co.</p>
                 <div class="user">
-                    <img src="image/avatar.png" alt="Avatar of Ruhit Dhar Raz">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop" alt="Avatar of Ruhit Dhar Raz">
                     <div class="user-info">
                         <h4>Ruhit Dhar Raz</h4>
                         <time datetime="2025-07-11">11 July 2025</time>
@@ -140,32 +154,59 @@
     <section class="optional-section">
         <h2>Ready to Focus Better?</h2>
         <p>“This template instantly leveled up our presence.” ~ Studio Vertex</p>
-        <a href="#contact" class="optional-button">Get Started Free</a>
+        <a href="signup.html" class="optional-button">Get Started Free</a>
         <div class="optional-image">
             <img src="image/wc-big.png" alt="Large preview image of WebFlow template">
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="c-container">
-            <div class="c-left">
-                <h2>Let's Get in Touch</h2>
-            </div>
-            <div class="c-right">
-                <form>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
-
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
-
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Write Your Message..."
-                        required></textarea>
-
-                    <button type="submit" class="c-btn">Get in Touch</button>
-                </form>
+    <!-- Why Choose WebFlow Section -->
+    <section class="why-choose-section">
+        <div class="why-container">
+            <h2>Why Choose WebFlow</h2>
+            <p class="why-subtitle">Discover what makes WebFlow the preferred choice for creative professionals</p>
+            
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">🎨</div>
+                    <h3>Modern Design</h3>
+                    <p>Stunning, contemporary aesthetics that capture attention and leave lasting impressions on your audience.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized performance with minimal dependencies ensures your site loads quickly on all devices.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">📱</div>
+                    <h3>Fully Responsive</h3>
+                    <p>Perfect experience on desktop, tablet, and mobile devices with our mobile-first approach.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">♿</div>
+                    <h3>Accessible</h3>
+                    <p>WCAG compliant with semantic HTML and proper ARIA labels for inclusive user experience.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🔧</div>
+                    <h3>Easy to Customize</h3>
+                    <p>Clean, well-organized code makes customization simple, even for non-technical users.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🚀</div>
+                    <h3>Production Ready</h3>
+                    <p>No build tools required. Deploy instantly with our static HTML/CSS template.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">💼</div>
+                    <h3>Professional Support</h3>
+                    <p>Comprehensive documentation and responsive support team to help you succeed.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🎯</div>
+                    <h3>Conversion Focused</h3>
+                    <p>Designed with user psychology in mind to maximize engagement and conversions.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -174,16 +215,16 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-logo">
-                <h2>WebFlow</h2>
+                <h2><span class="footer-web">Web</span><span class="footer-flow">Flow</span></h2>
                 <p>Ready to elevate your online presence? Contact us today to discover how we can bring your vision to
                     life.</p>
             </div>
 
             <ul class="footer-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Reviews</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Services</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
             </ul>
 
             <div class="footer-bottom">
@@ -191,6 +232,84 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+        }
+
+        // Set active link based on current page
+        function setActiveLink() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Check if user is logged in on page load
+        window.addEventListener('load', function() {
+            setActiveLink();
+            
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            const navLinks = document.getElementById('navLinks');
+            const mobileLogoutContainer = document.getElementById('mobileLogoutContainer');
+            const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
+
+            if (loggedInUser) {
+                const user = JSON.parse(loggedInUser);
+                
+                // Desktop logout button
+                navLinks.innerHTML = `
+                    <li style="display: flex; align-items: center; gap: 20px; list-style: none;">
+                        <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">Welcome, <strong>${user.firstname} ${user.lastname}</strong></span>
+                        <button id="logoutBtn" class="btn" style="background: linear-gradient(135deg, #513eff 0%, #0099ff 100%); cursor: pointer; padding: 12px 24px; font-weight: 700;">Log Out</button>
+                    </li>
+                `;
+
+                // Show mobile logout button
+                mobileLogoutContainer.style.display = 'block';
+
+                // Add logout functionality for desktop
+                document.getElementById('logoutBtn').addEventListener('click', function() {
+                    localStorage.removeItem('loggedInUser');
+                    localStorage.removeItem('rememberMe');
+                    alert('Logged out successfully!');
+                    window.location.href = 'signin.html';
+                });
+
+                // Add logout functionality for mobile
+                mobileLogoutBtn.addEventListener('click', function() {
+                    localStorage.removeItem('loggedInUser');
+                    localStorage.removeItem('rememberMe');
+                    alert('Logged out successfully!');
+                    window.location.href = 'signin.html';
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

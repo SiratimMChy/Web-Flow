@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign in to WebFlow - Access your account.">
+    <link rel="icon" href="favicon.ico">
+    <title>Sign In - WebFlow</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url('image/Hero-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Open Sans', sans-serif;
+            padding: 20px;
+        }
+
+        .signin-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .signin-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .signin-left {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: var(--white);
+        }
+
+        .signin-left h2 {
+            font-family: var(--font-secondary);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .signin-left p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .features {
+            list-style: none;
+        }
+
+        .features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+            font-size: 13px;
+        }
+
+        .features li::before {
+            content: '✓';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        .signin-right {
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--white);
+        }
+
+        .form-header {
+            margin-bottom: 35px;
+        }
+
+        .form-header h1 {
+            font-family: var(--font-secondary);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-main);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 11px 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: var(--font-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(81, 62, 255, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .password-group {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 38px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 16px;
+            user-select: none;
+            transition: color 0.3s;
+            display: none;
+        }
+
+        .toggle-password:hover {
+            color: var(--primary-color);
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-weight: 400;
+            font-size: 12px;
+            cursor: pointer;
+            color: var(--text-muted);
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .signin-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .signin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(81, 62, 255, 0.3);
+        }
+
+        .signin-btn:active {
+            transform: translateY(0);
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .signup-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .signin-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .signin-left {
+                padding: 35px 30px;
+                order: 2;
+            }
+
+            .signin-right {
+                padding: 35px 30px;
+                order: 1;
+            }
+
+            .signin-left h2 {
+                font-size: 24px;
+            }
+
+            .form-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .signin-wrapper {
+                border-radius: 12px;
+            }
+
+            .signin-left,
+            .signin-right {
+                padding: 25px 20px;
+            }
+
+            .signin-left h2 {
+                font-size: 20px;
+            }
+
+            .form-header h1 {
+                font-size: 22px;
+            }
+
+            .features li {
+                font-size: 12px;
+            }
+
+            .form-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <h1 class="nav-title"><span class="nav-web">Web</span><span class="nav-flow">Flow</span></h1>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+            <ul id="navLinks" class="nav-auth">
+                <li><a href="signup.html" class="btn">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Signin Container -->
+    <div class="signin-container">
+        <div class="signin-wrapper">
+            <!-- Left Section -->
+            <div class="signin-left">
+                <h2>Welcome Back to WebFlow</h2>
+                <p>Access your account and continue where you left off. Manage your projects, track progress, and achieve your goals.</p>
+                <ul class="features">
+                    <li>Secure login with encryption</li>
+                    <li>Access all your projects instantly</li>
+                    <li>Real-time notifications</li>
+                    <li>Sync across all devices</li>
+                    <li>24/7 account support</li>
+                </ul>
+            </div>
+
+            <!-- Right Section -->
+            <div class="signin-right">
+                <div class="form-header">
+                    <h1>Sign In</h1>
+                    <p>Enter your credentials to access your account</p>
+                </div>
+
+                <form id="signinForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                        <div class="error-message"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-group">
+                            <input type="password" id="password" name="password" placeholder="Enter your password"
+                                required>
+                            <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+                        </div>
+                        <div class="error-message"></div>
+                    </div>
+
+                    <div class="form-footer">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="signin-btn">Sign In</button>
+
+                    <div class="signup-link">
+                        Don't have an account? <a href="signup.html">Create One</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set active link based on current page
+        function setActiveLink() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const type = field.type === 'password' ? 'text' : 'password';
+            field.type = type;
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        window.addEventListener('load', function() {
+            setActiveLink();
+            
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            const navLinks = document.getElementById('navLinks');
+
+            if (loggedInUser) {
+                const user = JSON.parse(loggedInUser);
+                
+                // Replace Sign Up link with user info and logout button
+                navLinks.innerHTML = `
+                    <li style="display: flex; align-items: center; gap: 20px; list-style: none;">
+                        <span style="color: var(--text-main); font-size: 14px; font-weight: 600;">Welcome, <strong>${user.firstname} ${user.lastname}</strong></span>
+                        <button id="logoutBtn" class="btn" style="background: linear-gradient(135deg, #513eff 0%, #7c3aed 50%, #a855f7 100%); cursor: pointer; padding: 12px 24px; font-weight: 700;">Log Out</button>
+                    </li>
+                `;
+
+                // Add logout functionality
+                document.getElementById('logoutBtn').addEventListener('click', function() {
+                    localStorage.removeItem('loggedInUser');
+                    localStorage.removeItem('rememberMe');
+                    alert('Logged out successfully!');
+                    window.location.href = 'signin.html';
+                });
+            }
+        });
+
+        document.getElementById('signinForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+
+            let isValid = true;
+
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+
+            // Validation
+            if (!validateEmail(email)) {
+                document.getElementById('email').nextElementSibling.textContent = 'Please enter a valid email';
+                document.getElementById('email').nextElementSibling.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!password) {
+                document.getElementById('password').parentElement.nextElementSibling.textContent = 'Password is required';
+                document.getElementById('password').parentElement.nextElementSibling.style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Get users from localStorage
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                
+                // Find user with matching email and password
+                const user = users.find(u => u.email === email && u.password === password);
+
+                if (user) {
+                    // Save current logged-in user to localStorage
+                    const loggedInUser = {
+                        firstname: user.firstname,
+                        lastname: user.lastname,
+                        email: user.email,
+                        loginTime: new Date().toISOString()
+                    };
+                    
+                    localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+                    
+                    if (remember) {
+                        localStorage.setItem('rememberMe', 'true');
+                    }
+
+                    alert('Signed in successfully!');
+                    
+                    // Redirect to dashboard or home page
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    // Email or password incorrect
+                    document.getElementById('email').nextElementSibling.textContent = 'Email or password is incorrect';
+                    document.getElementById('email').nextElementSibling.style.display = 'block';
+                }
+            }
+        });
+
+        // Check if user is already logged in on page load
+        window.addEventListener('load', function() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                // User is already logged in, redirect to home
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign up for WebFlow - Join thousands of productive users.">
+    <link rel="icon" href="favicon.ico">
+    <title>Sign Up - WebFlow</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url('image/Hero-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Open Sans', sans-serif;
+            padding: 20px;
+        }
+
+        .signup-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .signup-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .signup-left {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: var(--white);
+        }
+
+        .signup-left h2 {
+            font-family: var(--font-secondary);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .signup-left p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .benefits {
+            list-style: none;
+        }
+
+        .benefits li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+            font-size: 13px;
+        }
+
+        .benefits li::before {
+            content: '✓';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        .signup-right {
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--white);
+        }
+
+        .form-header {
+            margin-bottom: 35px;
+        }
+
+        .form-header h1 {
+            font-family: var(--font-secondary);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-row .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-main);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 11px 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: var(--font-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(81, 62, 255, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .password-group {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 38px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 16px;
+            user-select: none;
+            transition: color 0.3s;
+            display: none;
+        }
+
+        .toggle-password:hover {
+            color: var(--primary-color);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            gap: 8px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-weight: 400;
+            font-size: 12px;
+            cursor: pointer;
+            color: var(--text-muted);
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .checkbox-group a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(81, 62, 255, 0.3);
+        }
+
+        .signup-btn:active {
+            transform: translateY(0);
+        }
+
+        .signin-link {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .signin-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signin-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .signup-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .signup-left {
+                padding: 35px 30px;
+                order: 2;
+            }
+
+            .signup-right {
+                padding: 35px 30px;
+                order: 1;
+            }
+
+            .signup-left h2 {
+                font-size: 24px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .signup-wrapper {
+                border-radius: 12px;
+            }
+
+            .signup-left,
+            .signup-right {
+                padding: 25px 20px;
+            }
+
+            .signup-left h2 {
+                font-size: 20px;
+            }
+
+            .form-header h1 {
+                font-size: 22px;
+            }
+
+            .benefits li {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Signup Container -->
+    <div class="signup-container">
+        <div class="signup-wrapper">
+            <!-- Left Section -->
+            <div class="signup-left">
+                <h2>Start Your Journey with WebFlow</h2>
+                <p>Join thousands of professionals who are already boosting their productivity and achieving their goals.</p>
+                <ul class="benefits">
+                    <li>Unlimited access to all features</li>
+                    <li>24/7 customer support</li>
+                    <li>Advanced analytics dashboard</li>
+                    <li>Secure data encryption</li>
+                    <li>Free 14-day trial</li>
+                </ul>
+            </div>
+
+            <!-- Right Section -->
+            <div class="signup-right">
+                <div class="form-header">
+                    <h1>Create Account</h1>
+                    <p>Get started in just a few minutes</p>
+                </div>
+
+                <form id="signupForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstname">First Name</label>
+                            <input type="text" id="firstname" name="firstname" placeholder="John" required>
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" id="lastname" name="lastname" placeholder="Doe" required>
+                            <div class="error-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                        <div class="error-message"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-group">
+                            <input type="password" id="password" name="password" placeholder="Create a strong password"
+                                required>
+                        </div>
+                        <div class="error-message"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="password-group">
+                            <input type="password" id="confirmPassword" name="confirmPassword"
+                                placeholder="Confirm your password" required>
+                        </div>
+                        <div class="error-message"></div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy
+                                Policy</a></label>
+                    </div>
+
+                    <button type="submit" class="signup-btn">Create Account</button>
+
+                    <div class="signin-link">
+                        Already have an account? <a href="signin.html">Sign In</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const type = field.type === 'password' ? 'text' : 'password';
+            field.type = type;
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePassword(password) {
+            return password.length >= 8;
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const firstname = document.getElementById('firstname').value.trim();
+            const lastname = document.getElementById('lastname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const terms = document.getElementById('terms').checked;
+
+            let isValid = true;
+
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+
+            // Validation
+            if (!firstname) {
+                document.getElementById('firstname').nextElementSibling.textContent = 'First name is required';
+                document.getElementById('firstname').nextElementSibling.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!lastname) {
+                document.getElementById('lastname').nextElementSibling.textContent = 'Last name is required';
+                document.getElementById('lastname').nextElementSibling.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!validateEmail(email)) {
+                document.getElementById('email').nextElementSibling.textContent = 'Please enter a valid email';
+                document.getElementById('email').nextElementSibling.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!validatePassword(password)) {
+                document.getElementById('password').parentElement.nextElementSibling.textContent = 'Password must be at least 8 characters';
+                document.getElementById('password').parentElement.nextElementSibling.style.display = 'block';
+                isValid = false;
+            }
+
+            if (password !== confirmPassword) {
+                document.getElementById('confirmPassword').parentElement.nextElementSibling.textContent = 'Passwords do not match';
+                document.getElementById('confirmPassword').parentElement.nextElementSibling.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!terms) {
+                alert('Please agree to the Terms of Service and Privacy Policy');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Check if email already exists
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const emailExists = users.some(user => user.email === email);
+
+                if (emailExists) {
+                    document.getElementById('email').nextElementSibling.textContent = 'Email already registered';
+                    document.getElementById('email').nextElementSibling.style.display = 'block';
+                    return;
+                }
+
+                // Save user to localStorage
+                const newUser = {
+                    firstname: firstname,
+                    lastname: lastname,
+                    email: email,
+                    password: password
+                };
+
+                users.push(newUser);
+                localStorage.setItem('users', JSON.stringify(users));
+
+                alert('Account created successfully!');
+                document.getElementById('signupForm').reset();
+                
+                // Redirect to signin page
+                setTimeout(() => {
+                    window.location.href = 'signin.html';
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+
+</html>

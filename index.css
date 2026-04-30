@@ -1,24 +1,29 @@
 :root {
     --primary-color: #513eff;
-    --secondary-color: #0099ff;
+    --secondary-color: #513eff;
     --light-bg: #f3fdff;
     --dark-bg: #000;
     --text-main: #1a1a1a;
     --text-muted: #555;
     --font-primary: 'Open Sans', sans-serif;
     --font-secondary: 'Raleway', sans-serif;
-
+    --border-color: #e0e0e0;
+    --error-color: #e74c3c;
+    --success-color: #27ae60;
+    --white: #ffffff;
+    --light-gray: #f9fafe;
+    --medium-gray: #e3e8ff;
 }
 
 body {
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #000;
+    font-family: var(--font-primary);
+    background-color: var(--dark-bg);
     background: url('image/Hero-bg.png');
     background-size: cover;
     background-position: center;
     text-align: center;
-    color: #1a1a1a;
+    color: var(--text-main);
 }
 
 * {
@@ -34,7 +39,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #1a1a1a;
+    color: var(--text-main);
 }
 
 /*Nav style*/
@@ -43,18 +48,105 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 20px 40px;
-
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .nav-title {
     font-weight: bolder;
     font-size: 30px;
-    color: #513eff;
-    font-family: 'Raleway', sans-serif;
+    flex: 0 0 auto;
+    font-family: var(--font-secondary);
+}
+
+.nav-web {
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.nav-flow {
+    color: var(--text-main);
+    display: inline-block;
 }
 
 .nav-title span {
-    color: black;
+    color: var(--text-main);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    justify-content: center;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.nav-menu li a:hover {
+    color: var(--primary-color);
+    background-color: rgba(81, 62, 255, 0.1);
+}
+
+.nav-menu li a.active {
+    color: var(--white);
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+}
+
+.nav-auth {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    flex: 0 0 auto;
+}
+
+.nav-auth.mobile-only {
+    display: none;
+}
+
+#mobileLogoutContainer {
+    display: none !important;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-main);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 nav ul li {
@@ -69,7 +161,6 @@ nav ul {
     display: flex;
     list-style: none;
     gap: 15px;
-
 }
 
 /*Banner*/
@@ -78,7 +169,7 @@ nav ul {
 }
 
 .hero h1 {
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font-secondary);
     font-size: 65px;
     font-weight: 700;
     max-width: 900px;
@@ -87,18 +178,20 @@ nav ul {
 }
 
 .btn {
-    background-color: var(--primary-color);
-    color: white;
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    color: var(--white);
     padding: 12px 24px;
     border: none;
     border-radius: 8px;
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
-    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(81, 62, 255, 0.3);
 }
 
 
@@ -113,7 +206,7 @@ nav ul {
     max-width: 100%;
     box-sizing: border-box;
     overflow: hidden;
-    background-color: rgb(249, 251, 255);
+    background-color: var(--light-bg);
 }
 
 .action-left {
@@ -126,16 +219,16 @@ nav ul {
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 16px;
-    color: #1a1a1a;
+    color: var(--text-main);
     text-align: left;
 }
 
 .action-left p {
     font-size: 16px;
     margin-bottom: 24px;
-    color: #333;
+    color: var(--text-muted);
     text-align: left;
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font-secondary);
 }
 
 .action-right {
@@ -143,7 +236,6 @@ nav ul {
     padding: 0 30px;
     text-align: center;
     box-sizing: border-box;
-
 }
 
 .action-right img {
@@ -155,8 +247,8 @@ nav ul {
 }
 
 .action-section .ac-btn {
-    background-color: #513eff;
-    color: white;
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    color: var(--white);
     width: auto;
     max-width: 229px;
     height: auto;
@@ -168,10 +260,12 @@ nav ul {
     text-align: center;
     text-decoration: none;
     margin-top: 20px;
+    transition: all 0.3s ease;
 }
 
 .ac-btn:hover {
-    background-color: #0099ff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(81, 62, 255, 0.3);
 }
 
 .action-left,
@@ -184,7 +278,7 @@ nav ul {
 
 /*User Section*/
 .users-section {
-    background-color: #f3fdff;
+    background-color: var(--light-bg);
     padding: 60px 20px;
     text-align: center;
     width: 100%;
@@ -192,21 +286,20 @@ nav ul {
     overflow-x: hidden;
 }
 
-
 .container {
     max-width: 1000px;
     margin: 0 auto;
-    background-color: #e3e8ff;
+    background-color: var(--medium-gray);
     border-radius: 20px;
     padding: 40px 20px;
 }
 
 .u-title {
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font-secondary);
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 40px;
-    color: #1a1a1a;
+    color: var(--text-main);
 }
 
 .users-status {
@@ -219,25 +312,27 @@ nav ul {
 .status h3 {
     font-size: 40px;
     font-weight: 700;
-    color: #513eff;
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 8px;
 }
 
 .status p {
     font-size: 16px;
-    color: #555;
-    font-family: 'Raleway', sans-serif;
+    color: var(--text-muted);
+    font-family: var(--font-secondary);
 }
 
 /*Contact Section*/
 .contact-section {
-    background-color: #ffffff;
+    background-color: var(--white);
     padding: 80px 20px;
     width: 100%;
     box-sizing: border-box;
     overflow-x: hidden;
 }
-
 
 .c-container {
     max-width: 1100px;
@@ -259,10 +354,10 @@ nav ul {
 }
 
 .c-left h2 {
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font-secondary);
     font-size: 70px;
     font-weight: 700;
-    color: #000;
+    color: var(--text-main);
     line-height: 1.2;
     margin: 0;
 }
@@ -280,7 +375,7 @@ nav ul {
 .c-right label {
     font-weight: 600;
     margin-bottom: 6px;
-    color: #333;
+    color: var(--text-main);
     text-align: left;
 }
 
@@ -288,7 +383,7 @@ nav ul {
 .c-right textarea {
     padding: 12px;
     margin-bottom: 20px;
-    border: 1px solid #dadada;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 14px;
     width: 100%;
@@ -296,33 +391,34 @@ nav ul {
 }
 
 .c-btn {
-    background-color: #513eff;
-    color: white;
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    color: var(--white);
     padding: 14px;
     border: none;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
 }
 
 .c-btn:hover {
-    background-color: #0099ff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(81, 62, 255, 0.3);
 }
 
 /*Review Section*/
 .review {
     padding: 4rem 2rem;
-    background-color: #f3fdff;
+    background-color: var(--light-bg);
     text-align: center;
     overflow: hidden;
 }
 
 .review h2 {
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font-secondary);
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #000000;
+    color: var(--text-main);
 }
 
 .review h3 {
@@ -332,7 +428,7 @@ nav ul {
 
 .card-container {
     display: flex;
-    background-color: #f3fdff;
+    background-color: var(--light-bg);
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
@@ -340,7 +436,7 @@ nav ul {
 }
 
 .card {
-    background: #fff;
+    background: var(--white);
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -350,16 +446,23 @@ nav ul {
     flex-direction: column;
     justify-content: space-between;
     text-align: left;
+    transition: all 0.3s ease;
 }
 
 .card:hover {
-    background: #c9f2fff5;
+    background: rgba(201, 242, 255, 0.96);
+    transform: translateY(-5px);
 }
 
 .card h3 {
     margin: 0 0 0.5rem;
     font-size: 1.2rem;
     font-weight: bold;
+    color: var(--text-main);
+}
+
+.card p {
+    color: var(--text-muted);
 }
 
 .stars {
@@ -390,6 +493,7 @@ nav ul {
     margin: 0;
     font-size: 1rem;
     font-weight: 600;
+    color: var(--text-main);
 }
 
 .user-info {
@@ -400,31 +504,31 @@ nav ul {
 
 .user-info span {
     font-size: 0.85rem;
-    color: #777;
+    color: var(--text-muted);
 }
 
 /*optional section*/
 .optional-section {
-    background-color: #f9fafe;
+    background-color: var(--light-gray);
     padding: 40px 20px;
     text-align: center;
     width: 100%;
     box-sizing: border-box;
     overflow-x: hidden;
-    color: var(--text-main, #1a1a1a);
+    color: var(--text-main);
 }
 
 .optional-section h2 {
     font-size: 24px;
-    color: #111;
+    color: var(--text-main);
     margin-bottom: 10px;
 }
 
 .optional-section p {
     font-size: 15px;
-    color: #555;
+    color: var(--text-muted);
     margin-bottom: 20px;
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font-secondary);
 }
 
 .optional-image img {
@@ -436,8 +540,8 @@ nav ul {
 }
 
 .optional-button {
-    background-color: #513eff;
-    color: white;
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    color: var(--white);
     width: auto;
     max-width: 229px;
     height: auto;
@@ -449,18 +553,90 @@ nav ul {
     text-align: center;
     text-decoration: none;
     margin-top: 20px;
+    transition: all 0.3s ease;
 }
 
 .optional-button:hover {
-    background-color: #0099ff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(81, 62, 255, 0.3);
 }
 
-/*footer*/
+/* Why Choose WebFlow Section */
+.why-choose-section {
+    background-color: var(--light-bg);
+    padding: 80px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.why-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.why-choose-section h2 {
+    font-family: var(--font-secondary);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.why-subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: var(--font-secondary);
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.why-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(81, 62, 255, 0.15);
+}
+
+.why-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.why-card h3 {
+    font-family: var(--font-secondary);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.why-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/*footer - v2*/
 .footer {
-    background-color: #f3fdff;
+    background-color: var(--light-bg);
     padding: 40px 20px 40px;
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-primary);
     color: #6e6e96;
 }
 
@@ -470,11 +646,23 @@ nav ul {
 }
 
 .footer-logo h2 {
-    color: #513eff;
     font-size: 40px;
     font-weight: bolder;
     margin-bottom: 10px;
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font-secondary);
+}
+
+.footer-web {
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.footer-flow {
+    color: #000000;
+    display: inline-block;
 }
 
 .footer-logo p {
@@ -493,7 +681,6 @@ nav ul {
     margin: 0 auto;
 }
 
-
 .footer-links a {
     text-decoration: none;
     color: #8787bb;
@@ -502,17 +689,18 @@ nav ul {
 }
 
 .footer-links a:hover {
-    color: #0011ff;
+    color: var(--primary-color);
 }
 
 .footer-bottom {
     margin-top: 30px;
     font-size: 13px;
     color: #999;
+    transition: color 0.3s ease;
 }
 
 .footer-bottom:hover {
-    color: #0011ff;
+    color: var(--primary-color);
 }
 
 /* Responsive Styles */
@@ -531,9 +719,63 @@ nav ul {
 
 @media (max-width: 768px) {
     nav {
-        flex-direction: column;
+        flex-direction: row;
         gap: 15px;
         padding: 10px 20px;
+    }
+
+    body {
+        padding-bottom: 0;
+    }
+
+    .banner {
+        padding: 60px 20px 100px;
+    }
+
+    .hero {
+        padding: 40px 20px 60px;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: var(--light-bg);
+        padding: 20px;
+        gap: 5px;
+        width: 100%;
+        box-sizing: border-box;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        padding-bottom: 100px;
+    }
+
+    .nav-menu li a {
+        padding: 10px 12px;
+        display: block;
+        text-align: left;
+    }
+
+    .hamburger {
+        display: flex;
+        order: 3;
+    }
+
+    .nav-auth {
+        display: none !important;
+    }
+
+    #mobileLogoutContainer {
+        display: block !important;
+        width: 100%;
+        margin-top: 10px;
     }
 
     .hero h1 {
@@ -583,6 +825,18 @@ nav ul {
 }
 
 @media (max-width: 480px) {
+    nav {
+        padding: 10px 15px;
+    }
+
+    .nav-title {
+        font-size: 24px;
+    }
+
+    .nav-menu {
+        top: 60px;
+    }
+
     .hero h1 {
         font-size: 32px;
     }
