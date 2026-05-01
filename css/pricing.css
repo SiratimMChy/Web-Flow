@@ -1,0 +1,406 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('../image/Hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-family: var(--font-primary);
+    color: var(--text-main);
+}
+
+/* Pricing Hero */
+.pricing-hero {
+    background: linear-gradient(135deg, rgba(81, 62, 255, 0.1) 0%, rgba(0, 153, 255, 0.1) 100%);
+    padding: 100px 20px;
+    text-align: center;
+    color: var(--text-main);
+}
+
+.pricing-hero h1 {
+    font-family: var(--font-secondary);
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pricing-hero p {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.pricing-content {
+    background-color: var(--light-bg);
+    padding: 80px 20px;
+}
+
+.pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pricing-intro {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.pricing-intro h2 {
+    font-family: var(--font-secondary);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+.pricing-intro p {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: var(--font-secondary);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.pricing-card {
+    background: linear-gradient(135deg, var(--white) 0%, rgba(255, 255, 255, 0.95) 100%);
+    border-radius: 16px;
+    padding: 50px 35px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    border: 1px solid rgba(81, 62, 255, 0.1);
+}
+
+.pricing-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 50px rgba(81, 62, 255, 0.2);
+    border-color: rgba(81, 62, 255, 0.3);
+}
+
+.pricing-card.featured {
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    color: var(--white);
+    transform: scale(1.08);
+    box-shadow: 0 15px 50px rgba(81, 62, 255, 0.3);
+}
+
+.pricing-card.featured:hover {
+    transform: scale(1.08) translateY(-15px);
+    box-shadow: 0 25px 60px rgba(81, 62, 255, 0.4);
+}
+
+.pricing-card.featured .plan-name,
+.pricing-card.featured .plan-description,
+.pricing-card.featured .price-period,
+.pricing-card.featured .features-list li {
+    color: var(--white);
+}
+
+.pricing-card.featured .features-list li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.pricing-card.featured .features-list li:before {
+    color: #c9f2ff;
+}
+
+.badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    color: var(--white);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(81, 62, 255, 0.3);
+}
+
+.plan-name {
+    font-family: var(--font-secondary);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    margin-top: 15px;
+}
+
+.plan-description {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    font-family: var(--font-secondary);
+}
+
+.price {
+    font-size: 56px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+.pricing-card.featured .price {
+    -webkit-text-fill-color: var(--white);
+    background: none;
+    color: var(--white);
+}
+
+.price-period {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    font-family: var(--font-secondary);
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 35px 0;
+    text-align: left;
+}
+
+.features-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.features-list li:last-child {
+    border-bottom: none;
+}
+
+.features-list li:before {
+    content: "✓";
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-right: 14px;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.plan-button {
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    color: var(--white);
+    padding: 16px 36px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 25px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+.plan-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(81, 62, 255, 0.4);
+}
+
+.pricing-card.featured .plan-button {
+    background: var(--white);
+    color: #513eff;
+    font-weight: 700;
+}
+
+.pricing-card.featured .plan-button:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* FAQ Section */
+.faq-section {
+    background: linear-gradient(135deg, rgba(81, 62, 255, 0.05) 0%, rgba(0, 153, 255, 0.05) 100%);
+    padding: 80px 20px;
+    border-radius: 16px;
+    margin-top: 80px;
+}
+
+.faq-title {
+    font-family: var(--font-secondary);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.faq-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 16px;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 8px 25px rgba(81, 62, 255, 0.15);
+}
+
+.faq-header {
+    padding: 24px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: linear-gradient(135deg, rgba(81, 62, 255, 0.02) 0%, rgba(0, 153, 255, 0.02) 100%);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover .faq-header {
+    background: linear-gradient(135deg, rgba(81, 62, 255, 0.08) 0%, rgba(0, 153, 255, 0.08) 100%);
+}
+
+.faq-item h3 {
+    font-family: var(--font-secondary);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0;
+    flex: 1;
+    text-align: left;
+}
+
+.faq-toggle {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(180deg);
+}
+
+.faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-content {
+    max-height: 500px;
+}
+
+.faq-content p {
+    padding: 0 30px 24px 30px;
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pricing-hero h1 {
+        font-size: 36px;
+    }
+
+    .pricing-intro h2 {
+        font-size: 28px;
+    }
+
+    .pricing-card.featured {
+        transform: scale(1);
+    }
+
+    .pricing-card.featured:hover {
+        transform: translateY(-10px);
+    }
+
+    .price {
+        font-size: 36px;
+    }
+
+    .faq-title {
+        font-size: 28px;
+    }
+
+    .pricing-content {
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-hero h1 {
+        font-size: 28px;
+    }
+
+    .pricing-hero p {
+        font-size: 16px;
+    }
+
+    .pricing-card {
+        padding: 30px 20px;
+    }
+
+    .price {
+        font-size: 32px;
+    }
+
+    .plan-button {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+}

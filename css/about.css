@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('../image/Hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-family: var(--font-primary);
+    color: var(--text-main);
+}
+
+/* About Page Specific Styles */
+.about-hero {
+    background: linear-gradient(135deg, rgba(81, 62, 255, 0.1) 0%, rgba(0, 153, 255, 0.1) 100%);
+    padding: 100px 20px;
+    text-align: center;
+    color: var(--text-main);
+}
+
+.about-hero h1 {
+    font-family: var(--font-secondary);
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-hero p {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.about-content {
+    background-color: var(--light-bg);
+    padding: 80px 20px;
+}
+
+.about-section {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-section:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text h2 {
+    font-family: var(--font-secondary);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(81, 62, 255, 0.15);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.value-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(81, 62, 255, 0.15);
+}
+
+.value-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.value-card h3 {
+    font-family: var(--font-secondary);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.value-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Team Section */
+.team-section {
+    background-color: var(--white);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.team-section h2 {
+    font-family: var(--font-secondary);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 50px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-member {
+    background: var(--light-bg);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(81, 62, 255, 0.15);
+}
+
+.team-avatar {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.team-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-member h3 {
+    font-family: var(--font-secondary);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.team-member p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.team-member .bio {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Timeline Section */
+.timeline {
+    background-color: var(--light-bg);
+    padding: 80px 20px;
+}
+
+.timeline h2 {
+    font-family: var(--font-secondary);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.timeline-dot {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-right: 30px;
+}
+
+.timeline-content {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-content h3 {
+    font-family: var(--font-secondary);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+    color: var(--white);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-family: var(--font-secondary);
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.cta-btn {
+    background: var(--white);
+    color: #513eff;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-hero h1 {
+        font-size: 36px;
+    }
+
+    .about-section {
+        flex-direction: column !important;
+    }
+
+    .about-text h2 {
+        font-size: 28px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timeline-dot {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .cta-section h2 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero h1 {
+        font-size: 28px;
+    }
+
+    .about-hero p {
+        font-size: 16px;
+    }
+
+    .about-text h2 {
+        font-size: 24px;
+    }
+
+    .team-section h2 {
+        font-size: 28px;
+    }
+
+    .timeline h2 {
+        font-size: 28px;
+    }
+
+    .cta-section p {
+        font-size: 16px;
+    }
+}

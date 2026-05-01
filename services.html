@@ -12,391 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="index.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: url('image/Hero-bg.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-            font-family: var(--font-primary);
-            color: var(--text-main);
-        }
-
-        /* Services Hero Section */
-        .services-hero {
-            background: linear-gradient(135deg, rgba(81, 62, 255, 0.9) 0%, rgba(0, 153, 255, 0.9) 100%),
-                url('image/Hero-bg.png');
-            background-size: cover;
-            background-position: center;
-            padding: 100px 20px;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .services-hero h1 {
-            font-family: var(--font-secondary);
-            font-size: 56px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .services-hero p {
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            opacity: 0.95;
-            line-height: 1.6;
-        }
-
-        /* Services Grid */
-        .services-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 40px 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border-top: 4px solid var(--primary-color);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(81, 62, 255, 0.15);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #513eff 0%, #7c3aed 50%, #a855f7 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            margin-bottom: 0;
-            margin-right: 15px;
-            color: var(--white);
-            flex-shrink: 0;
-        }
-
-        .service-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-family: var(--font-secondary);
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 0;
-            margin-top: 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .service-features li {
-            color: var(--text-muted);
-            font-size: 13px;
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .service-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .service-btn {
-            background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
-            color: var(--white);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .service-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(81, 62, 255, 0.3);
-        }
-
-        /* Pricing Section */
-        .pricing-section {
-            background-color: var(--light-bg);
-            padding: 80px 20px;
-        }
-
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .pricing-header h2 {
-            font-family: var(--font-secondary);
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 15px;
-        }
-
-        .pricing-header p {
-            font-size: 16px;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .pricing-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .pricing-card.featured {
-            border: 2px solid var(--primary-color);
-            transform: scale(1.05);
-        }
-
-        .pricing-card:hover {
-            box-shadow: 0 15px 40px rgba(81, 62, 255, 0.15);
-        }
-
-        .pricing-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .pricing-name {
-            font-family: var(--font-secondary);
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 15px;
-            margin-top: 10px;
-        }
-
-        .pricing-price {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .pricing-price span {
-            font-size: 18px;
-            color: var(--text-muted);
-        }
-
-        .pricing-description {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 30px;
-            text-align: left;
-        }
-
-        .pricing-features li {
-            color: var(--text-muted);
-            font-size: 13px;
-            padding: 10px 0;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .pricing-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .pricing-btn {
-            background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
-            color: var(--white);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            width: 100%;
-        }
-
-        .pricing-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(81, 62, 255, 0.3);
-        }
-
-        /* CTA Section */
-        .services-cta {
-            background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
-            color: var(--white);
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .services-cta h2 {
-            font-family: var(--font-secondary);
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .services-cta p {
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            opacity: 0.95;
-            line-height: 1.6;
-        }
-
-        .cta-btn {
-            background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
-            color: var(--white);
-            border: none;
-            padding: 14px 40px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(81, 62, 255, 0.3);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .services-hero h1 {
-                font-size: 36px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-card.featured {
-                transform: scale(1);
-            }
-
-            .services-cta h2 {
-                font-size: 32px;
-            }
-
-            .pricing-header h2 {
-                font-size: 32px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .services-hero h1 {
-                font-size: 28px;
-            }
-
-            .services-hero p {
-                font-size: 16px;
-            }
-
-            .service-card {
-                padding: 25px 20px;
-            }
-
-            .pricing-price {
-                font-size: 36px;
-            }
-
-            .services-cta p {
-                font-size: 16px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/services.css">
 </head>
 
 <body>
@@ -407,6 +23,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li id="mobileLogoutContainer" style="display: none; width: 100%; margin-top: 10px;">
@@ -434,7 +51,7 @@
     <section class="services-container">
         <div class="services-grid">
             <!-- Service 1 -->
-            <div class="service-card">
+            <div class="service-card" data-service="analytics" data-title="Analytics Dashboard" data-description="Get real-time insights into your performance with our advanced analytics dashboard. Track every metric that matters to your business and make data-driven decisions." data-features="Real-time data tracking with live updates,Custom reports tailored to your needs,Comprehensive performance metrics,One-click export capabilities,Historical data analysis,Customizable dashboards">
                 <div class="service-header">
                     <div class="service-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -451,11 +68,11 @@
                     <li>Performance metrics</li>
                     <li>Export capabilities</li>
                 </ul>
-                <button class="service-btn">Learn More</button>
+                <button class="service-btn learn-more-btn">Learn More</button>
             </div>
 
             <!-- Service 2 -->
-            <div class="service-card">
+            <div class="service-card" data-service="security" data-title="Security & Encryption" data-description="Enterprise-grade security to protect your data with military-level encryption. Your privacy and data protection are our top priorities." data-features="End-to-end encryption for all data,Two-factor authentication support,Regular security audits and updates,Compliance certified (ISO 27001, SOC 2),Advanced threat detection,Secure data backup and recovery">
                 <div class="service-header">
                     <div class="service-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -471,11 +88,11 @@
                     <li>Regular security audits</li>
                     <li>Compliance certified</li>
                 </ul>
-                <button class="service-btn">Learn More</button>
+                <button class="service-btn learn-more-btn">Learn More</button>
             </div>
 
             <!-- Service 3 -->
-            <div class="service-card">
+            <div class="service-card" data-service="performance" data-title="Performance Optimization" data-description="Maximize your productivity with our intelligent optimization tools. Automate repetitive tasks and focus on what matters most." data-features="Speed optimization for faster workflows,Intelligent resource management,Automated workflow creation,AI-powered suggestions and insights,Performance monitoring and alerts,Batch processing capabilities">
                 <div class="service-header">
                     <div class="service-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -491,11 +108,11 @@
                     <li>Automated workflows</li>
                     <li>AI-powered suggestions</li>
                 </ul>
-                <button class="service-btn">Learn More</button>
+                <button class="service-btn learn-more-btn">Learn More</button>
             </div>
 
             <!-- Service 4 -->
-            <div class="service-card">
+            <div class="service-card" data-service="collaboration" data-title="Team Collaboration" data-description="Seamless collaboration tools to keep your team connected and productive. Work together in real-time from anywhere in the world." data-features="Real-time collaboration on projects,Secure file sharing and storage,Integrated team messaging,Advanced project management tools,Version control and history tracking,Team permissions and access control">
                 <div class="service-header">
                     <div class="service-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -514,11 +131,11 @@
                     <li>Team messaging</li>
                     <li>Project management</li>
                 </ul>
-                <button class="service-btn">Learn More</button>
+                <button class="service-btn learn-more-btn">Learn More</button>
             </div>
 
             <!-- Service 5 -->
-            <div class="service-card">
+            <div class="service-card" data-service="mobile" data-title="Mobile Integration" data-description="Access your work anywhere with our fully responsive mobile applications. Stay productive on the go with seamless synchronization." data-features="Native iOS & Android applications,Offline access to your data,Push notifications for updates,Automatic sync across all devices,Mobile-optimized interface,Biometric authentication support">
                 <div class="service-header">
                     <div class="service-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -536,11 +153,11 @@
                     <li>Push notifications</li>
                     <li>Sync across devices</li>
                 </ul>
-                <button class="service-btn">Learn More</button>
+                <button class="service-btn learn-more-btn">Learn More</button>
             </div>
 
             <!-- Service 6 -->
-            <div class="service-card">
+            <div class="service-card" data-service="support" data-title="24/7 Support" data-description="Round-the-clock customer support to help you whenever you need it. Our expert team is always ready to assist you." data-features="Live chat support available 24/7,Email support with quick response times,Phone support for urgent issues,Comprehensive knowledge base,Video tutorials and guides,Dedicated account manager (Enterprise)">
                 <div class="service-header">
                     <div class="service-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -556,175 +173,52 @@
                     <li>Phone support</li>
                     <li>Knowledge base</li>
                 </ul>
-                <button class="service-btn">Learn More</button>
+                <button class="service-btn learn-more-btn">Learn More</button>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing-section">
-        <div class="pricing-header">
-            <h2>Simple, Transparent Pricing</h2>
-            <p>Choose the perfect plan for your needs. Always flexible to scale as you grow.</p>
-        </div>
-
-        <div class="pricing-grid">
-            <!-- Starter Plan -->
-            <div class="pricing-card">
-                <div class="pricing-name">Starter</div>
-                <div class="pricing-price">$29<span>/month</span></div>
-                <p class="pricing-description">Perfect for individuals and small teams</p>
-                <ul class="pricing-features">
-                    <li>Up to 5 projects</li>
-                    <li>5GB storage</li>
-                    <li>Basic analytics</li>
-                    <li>Email support</li>
-                    <li>Community access</li>
-                </ul>
-                <button class="pricing-btn">Get Started</button>
+    <!-- Single Service Details Modal -->
+    <div id="serviceModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modalTitle">Service Details</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
             </div>
-
-            <!-- Professional Plan -->
-            <div class="pricing-card featured">
-                <div class="pricing-badge">Most Popular</div>
-                <div class="pricing-name">Professional</div>
-                <div class="pricing-price">$79<span>/month</span></div>
-                <p class="pricing-description">Ideal for growing businesses</p>
-                <ul class="pricing-features">
-                    <li>Unlimited projects</li>
-                    <li>100GB storage</li>
-                    <li>Advanced analytics</li>
-                    <li>Priority support</li>
-                    <li>Team collaboration</li>
-                    <li>API access</li>
-                </ul>
-                <button class="pricing-btn">Get Started</button>
+            <div class="modal-body">
+                <p id="modalDescription"></p>
+                <ul class="modal-features" id="modalFeatures"></ul>
             </div>
-
-            <!-- Enterprise Plan -->
-            <div class="pricing-card">
-                <div class="pricing-name">Enterprise</div>
-                <div class="pricing-price">Custom<span>/month</span></div>
-                <p class="pricing-description">For large-scale operations</p>
-                <ul class="pricing-features">
-                    <li>Unlimited everything</li>
-                    <li>Unlimited storage</li>
-                    <li>Custom analytics</li>
-                    <li>24/7 phone support</li>
-                    <li>Dedicated account manager</li>
-                    <li>Custom integrations</li>
-                </ul>
-                <button class="pricing-btn">Contact Sales</button>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-secondary" onclick="closeModal()">Close</button>
+                <button class="modal-btn modal-btn-primary" onclick="window.location.href='get-started.html'">Get Started</button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- CTA Section -->
-    <section class="services-cta">
-        <h2>Ready to Get Started?</h2>
-        <p>Join thousands of productive users and transform the way you work today.</p>
-        <button class="cta-btn" onclick="window.location.href='signup.html'">Start Free Trial</button>
-    </section>
+    <!-- Get Started Form Modal - No longer needed, redirects to get-started.html instead -->
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-logo">
                 <h2><span class="footer-web">Web</span><span class="footer-flow">Flow</span></h2>
-                <p>Ready to elevate your online presence? Contact us today to discover how we can bring your vision to
-                    life.</p>
+                <p>Ready to elevate your online presence? Contact us today to discover how we can bring your vision to life.</p>
             </div>
-
             <ul class="footer-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="about.html">About Us</a></li>
             </ul>
-
             <div class="footer-bottom">
                 &copy; 2025 WebFlow. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <script>
-        // Hamburger menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-
-        if (hamburger) {
-            hamburger.addEventListener('click', function() {
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            });
-
-            // Close menu when a link is clicked
-            const navLinks = navMenu.querySelectorAll('a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                });
-            });
-        }
-
-        // Set active link based on current page
-        function setActiveLink() {
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            
-            navLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        }
-
-        // Check if user is logged in on page load
-        window.addEventListener('load', function() {
-            setActiveLink();
-            
-            const loggedInUser = localStorage.getItem('loggedInUser');
-            const navLinks = document.getElementById('navLinks');
-            const mobileLogoutContainer = document.getElementById('mobileLogoutContainer');
-            const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
-
-            if (loggedInUser) {
-                const user = JSON.parse(loggedInUser);
-                
-                // Desktop logout button
-                navLinks.innerHTML = `
-                    <li style="display: flex; align-items: center; gap: 20px; list-style: none;">
-                        <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">Welcome, <strong>${user.firstname} ${user.lastname}</strong></span>
-                        <button id="logoutBtn" class="btn" style="background: linear-gradient(135deg, #513eff 0%, #0099ff 100%); cursor: pointer; padding: 12px 24px; font-weight: 700;">Log Out</button>
-                    </li>
-                `;
-
-                // Show mobile logout button
-                mobileLogoutContainer.style.display = 'block';
-
-                // Add logout functionality for desktop
-                document.getElementById('logoutBtn').addEventListener('click', function() {
-                    localStorage.removeItem('loggedInUser');
-                    localStorage.removeItem('rememberMe');
-                    alert('Logged out successfully!');
-                    window.location.href = 'signin.html';
-                });
-
-                // Add logout functionality for mobile
-                mobileLogoutBtn.addEventListener('click', function() {
-                    localStorage.removeItem('loggedInUser');
-                    localStorage.removeItem('rememberMe');
-                    alert('Logged out successfully!');
-                    window.location.href = 'signin.html';
-                });
-            }
-        });
-    </script>
+    <script src="js/services.js"></script>
 </body>
 
 </html>

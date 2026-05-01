@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WebFlow Pricing - Choose the perfect plan for your needs.">
+    <link rel="icon" href="favicon.ico">
+    <title>Pricing - WebFlow</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Pricing Page Specific Styles */
+        .pricing-hero {
+            background: linear-gradient(135deg, rgba(81, 62, 255, 0.1) 0%, rgba(0, 153, 255, 0.1) 100%);
+            padding: 100px 20px;
+            text-align: center;
+            color: var(--text-main);
+        }
+
+        .pricing-hero h1 {
+            font-family: var(--font-secondary);
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .pricing-content {
+            background-color: var(--light-bg);
+            padding: 80px 20px;
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pricing-intro h2 {
+            font-family: var(--font-secondary);
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 15px;
+        }
+
+        .pricing-intro p {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: var(--font-secondary);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, var(--white) 0%, rgba(255, 255, 255, 0.95) 100%);
+            border-radius: 16px;
+            padding: 50px 35px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid rgba(81, 62, 255, 0.1);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(81, 62, 255, 0.2);
+            border-color: rgba(81, 62, 255, 0.3);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+            color: var(--white);
+            transform: scale(1.08);
+            box-shadow: 0 15px 50px rgba(81, 62, 255, 0.3);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.08) translateY(-15px);
+            box-shadow: 0 25px 60px rgba(81, 62, 255, 0.4);
+        }
+
+        .pricing-card.featured .plan-name,
+        .pricing-card.featured .plan-description,
+        .pricing-card.featured .price-period,
+        .pricing-card.featured .features-list li {
+            color: var(--white);
+        }
+
+        .pricing-card.featured .features-list li {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .pricing-card.featured .features-list li:before {
+            color: #c9f2ff;
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(81, 62, 255, 0.3);
+        }
+
+        .plan-name {
+            font-family: var(--font-secondary);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            margin-top: 15px;
+        }
+
+        .plan-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-family: var(--font-secondary);
+        }
+
+        .price {
+            font-size: 56px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            margin-top: 20px;
+        }
+
+        .pricing-card.featured .price {
+            -webkit-text-fill-color: var(--white);
+            background: none;
+            color: var(--white);
+        }
+
+        .price-period {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            font-family: var(--font-secondary);
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 35px 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-right: 14px;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .plan-button {
+            background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+            color: var(--white);
+            padding: 16px 36px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .plan-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(81, 62, 255, 0.4);
+        }
+
+        .pricing-card.featured .plan-button {
+            background: var(--white);
+            color: #513eff;
+            font-weight: 700;
+        }
+
+        .pricing-card.featured .plan-button:hover {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-section {
+            background: linear-gradient(135deg, rgba(81, 62, 255, 0.05) 0%, rgba(0, 153, 255, 0.05) 100%);
+            padding: 80px 20px;
+            border-radius: 16px;
+            margin-top: 80px;
+        }
+
+        .faq-title {
+            font-family: var(--font-secondary);
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--text-main);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .faq-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(81, 62, 255, 0.15);
+        }
+
+        .faq-header {
+            padding: 24px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: linear-gradient(135deg, rgba(81, 62, 255, 0.02) 0%, rgba(0, 153, 255, 0.02) 100%);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover .faq-header {
+            background: linear-gradient(135deg, rgba(81, 62, 255, 0.08) 0%, rgba(0, 153, 255, 0.08) 100%);
+        }
+
+        .faq-item h3 {
+            font-family: var(--font-secondary);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 0;
+            flex: 1;
+            text-align: left;
+        }
+
+        .faq-toggle {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #513eff 0%, #0099ff 100%);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 20px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-content {
+            max-height: 500px;
+        }
+
+        .faq-content p {
+            padding: 0 30px 24px 30px;
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pricing-hero h1 {
+                font-size: 36px;
+            }
+
+            .pricing-intro h2 {
+                font-size: 28px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+
+            .price {
+                font-size: 36px;
+            }
+
+            .faq-title {
+                font-size: 28px;
+            }
+
+            .pricing-content {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <h1 class="nav-title"><span class="nav-web">Web</span><span class="nav-flow">Flow</span></h1>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li id="mobileLogoutContainer" style="display: none; width: 100%; margin-top: 10px;">
+                    <button id="mobileLogoutBtn" class="btn" style="background: linear-gradient(135deg, #513eff 0%, #0099ff 100%); cursor: pointer; padding: 12px 24px; font-weight: 700; width: 100%; display: block;">Log Out</button>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navLinks" class="nav-auth">
+                <li><a href="signup.html" class="btn">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Pricing Hero -->
+    <section class="pricing-hero">
+        <h1>Simple, Transparent Pricing</h1>
+        <p>Choose the perfect plan for your creative needs. Scale as you grow.</p>
+    </section>
+
+    <!-- Pricing Content -->
+    <section class="pricing-content">
+        <div class="pricing-container">
+            <!-- Pricing Intro -->
+            <div class="pricing-intro">
+                <h2>Plans for Every Creator</h2>
+                <p>Whether you're just starting or scaling your agency, we have a plan that fits your needs.</p>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="pricing-grid">
+                <!-- Starter Plan -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Starter</h3>
+                    <p class="plan-description">Perfect for freelancers and small projects</p>
+                    <div class="price">$29</div>
+                    <p class="price-period">per month</p>
+                    <ul class="features-list">
+                        <li>5 Projects</li>
+                        <li>Basic Templates</li>
+                        <li>Community Support</li>
+                        <li>1 GB Storage</li>
+                        <li>Email Support</li>
+                    </ul>
+                    <button class="plan-button" onclick="window.location.href='get-started.html'">Get Started</button>
+                </div>
+
+                <!-- Professional Plan -->
+                <div class="pricing-card featured">
+                    <span class="badge">Most Popular</span>
+                    <h3 class="plan-name">Professional</h3>
+                    <p class="plan-description">Ideal for growing agencies</p>
+                    <div class="price">$79</div>
+                    <p class="price-period">per month</p>
+                    <ul class="features-list">
+                        <li>Unlimited Projects</li>
+                        <li>Premium Templates</li>
+                        <li>Priority Support</li>
+                        <li>50 GB Storage</li>
+                        <li>Phone & Email Support</li>
+                        <li>Advanced Analytics</li>
+                        <li>Team Collaboration</li>
+                    </ul>
+                    <button class="plan-button" onclick="window.location.href='get-started.html'">Get Started</button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Enterprise</h3>
+                    <p class="plan-description">For large-scale operations</p>
+                    <div class="price">Custom</div>
+                    <p class="price-period">contact us</p>
+                    <ul class="features-list">
+                        <li>Everything in Professional</li>
+                        <li>Unlimited Storage</li>
+                        <li>Dedicated Account Manager</li>
+                        <li>Custom Integrations</li>
+                        <li>SLA Guarantee</li>
+                        <li>White Label Options</li>
+                        <li>24/7 Premium Support</li>
+                    </ul>
+                    <button class="plan-button" onclick="window.location.href='get-started.html'">Contact Sales</button>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2 class="faq-title">Frequently Asked Questions</h2>
+                <p class="faq-subtitle">Find answers to common questions about our pricing and services</p>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h3>What is included in each pricing tier?</h3>
+                            <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-content">
+                            <p>Each plan includes core features with increasing capabilities. Starter includes basic templates and community support. Professional adds unlimited projects, priority support, and advanced analytics. Enterprise provides custom solutions with dedicated account management and 24/7 support.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h3>Can I upgrade or downgrade my subscription?</h3>
+                            <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes, you can change your plan at any time. Upgrades take effect immediately, while downgrades apply at the start of your next billing cycle. We'll prorate any charges or credits based on your usage.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h3>What are your billing and payment terms?</h3>
+                            <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-content">
+                            <p>We offer flexible monthly and annual billing options. Annual plans include a 20% discount. We accept all major credit cards, PayPal, and bank transfers for enterprise accounts. Invoices are issued automatically upon payment.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h3>Is there a free trial available?</h3>
+                            <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes, we provide a 14-day free trial for all plans with full feature access. No credit card is required to start. After the trial period, you can choose to subscribe or your account will be archived.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h3>What is your cancellation and refund policy?</h3>
+                            <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-content">
+                            <p>You can cancel your subscription anytime without penalties. We offer a 30-day money-back guarantee for new customers. Refunds are processed within 5-7 business days. Your data remains accessible for 30 days after cancellation.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h3>Do you offer custom enterprise solutions?</h3>
+                            <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-content">
+                            <p>Absolutely. Our Enterprise plan includes custom integrations, white-label options, and dedicated support. Contact our sales team to discuss your specific requirements and receive a tailored proposal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2><span class="footer-web">Web</span><span class="footer-flow">Flow</span></h2>
+                <p>Ready to elevate your online presence? Contact us today to discover how we can bring your vision to
+                    life.</p>
+            </div>
+
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+
+            <div class="footer-bottom">
+                &copy; 2025 WebFlow. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const header = item.querySelector('.faq-header');
+            header.addEventListener('click', function() {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+        }
+
+        // Set active link based on current page
+        function setActiveLink() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Check if user is logged in on page load
+        window.addEventListener('load', function() {
+            setActiveLink();
+            
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            const navLinks = document.getElementById('navLinks');
+            const mobileLogoutContainer = document.getElementById('mobileLogoutContainer');
+            const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
+
+            if (loggedInUser) {
+                const user = JSON.parse(loggedInUser);
+                
+                // Desktop logout button
+                navLinks.innerHTML = `
+                    <li style="display: flex; align-items: center; gap: 20px; list-style: none;">
+                        <span style="color: #1a1a1a; font-size: 14px; font-weight: 600;">Welcome, <strong>${user.firstname} ${user.lastname}</strong></span>
+                        <button id="logoutBtn" class="btn" style="background: linear-gradient(135deg, #513eff 0%, #0099ff 100%); cursor: pointer; padding: 12px 24px; font-weight: 700;">Log Out</button>
+                    </li>
+                `;
+
+                // Show mobile logout button
+                mobileLogoutContainer.style.display = 'block';
+
+                // Add logout functionality for desktop
+                document.getElementById('logoutBtn').addEventListener('click', function() {
+                    localStorage.removeItem('loggedInUser');
+                    localStorage.removeItem('rememberMe');
+                    alert('Logged out successfully!');
+                    window.location.href = 'signin.html';
+                });
+
+                // Add logout functionality for mobile
+                mobileLogoutBtn.addEventListener('click', function() {
+                    localStorage.removeItem('loggedInUser');
+                    localStorage.removeItem('rememberMe');
+                    alert('Logged out successfully!');
+                    window.location.href = 'signin.html';
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
